@@ -1,4 +1,4 @@
-package com.noway.mybatis.entity;
+package com.juxinli.payment.entity;
 
 public class UserEntity {
 	

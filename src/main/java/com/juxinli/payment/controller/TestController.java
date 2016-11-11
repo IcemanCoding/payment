@@ -1,4 +1,4 @@
-package com.noway.mybatis.controller;
+package com.juxinli.payment.controller;
 
 import java.util.HashMap;
 import java.util.Map;
