@@ -2,7 +2,7 @@ package com.juxinli.payment.core.component;
 
 /**
  * Created by ziqing.chen
- * on 2016/11/11.
+ * on 2016/11/14.
  */
-public class BaseController {
+public class PaymentBaseController {
 }

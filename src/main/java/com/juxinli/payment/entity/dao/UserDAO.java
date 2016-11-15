@@ -1,4 +1,4 @@
-package com.juxinli.payment.dao;
+package com.juxinli.payment.entity.dao;
 
 import com.juxinli.payment.entity.UserEntity;
 
