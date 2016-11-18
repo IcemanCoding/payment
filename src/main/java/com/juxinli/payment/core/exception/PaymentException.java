@@ -1,5 +1,7 @@
 package com.juxinli.payment.core.exception;
 
+import com.juxinli.payment.constants.ResponseCodeEnum;
+
 /**
  * Created by ziqing.chen
  * on 2016/11/17.
@@ -31,6 +33,12 @@ public class PaymentException extends Exception {
         super( errCode + ":" + errMsg );
         this.errCode = errCode;
         this.errMsg = errMsg;
+    }
+    
+    public PaymentException( ResponseCodeEnum responseCode ) {
+        super( responseCode.getCode() + ":" + responseCode.getMsg() );
+        this.errCode = responseCode.getCode();
+        this.errMsg = responseCode.getMsg();
     }
 
     public String getErrCode() {

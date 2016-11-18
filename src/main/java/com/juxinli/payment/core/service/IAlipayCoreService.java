@@ -1,7 +1,6 @@
 package com.juxinli.payment.core.service;
 
 import java.util.Map;
-
 import com.juxinli.payment.core.exception.PaymentException;
 import com.juxinli.payment.domain.AlipayWebSignVO;
 
@@ -14,5 +13,7 @@ public interface IAlipayCoreService {
 //    JSONObject webPaySign( AlipayWebSignModel _alipayWebSignModel ) throws Exception;
 
 	Map<String, Object> webPaySign( AlipayWebSignVO webSignVo ) throws PaymentException;
+
+	Boolean verifyWebPayCallback( Map<String, Object> inputsMap ) throws PaymentException;
 
 }

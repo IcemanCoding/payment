@@ -2,10 +2,10 @@ package com.juxinli.payment.core.service.impl;
 
 import java.math.BigDecimal;
 import java.util.Map;
-
 import org.springframework.stereotype.Service;
-
+import com.juxinli.payment.constants.ResponseCodeEnum;
 import com.juxinli.payment.core.alipay.AlipayCoreRequestUtils;
+import com.juxinli.payment.core.alipay.AlipayCoreResponseUtils;
 import com.juxinli.payment.core.alipay.AlipayWebPayRequest;
 import com.juxinli.payment.core.exception.PaymentException;
 import com.juxinli.payment.core.service.IAlipayCoreService;
@@ -42,6 +42,27 @@ public class AlipayCoreServiceImpl implements IAlipayCoreService {
 	}
 
 
+
+
+	@Override
+	public Boolean verifyWebPayCallback( Map<String, Object> inputsMap ) throws PaymentException {
+		
+		String trade_status = "";
+		try {
+			trade_status = new String( inputsMap.get( "trade_status" ).toString().getBytes( "ISO-8859-1" ), "UTF-8" );
+		} catch ( Exception e ) {
+			throw new PaymentException( ResponseCodeEnum.PROCESS_FAIL );
+		}
+
+		if ( AlipayCoreResponseUtils.verify( inputsMap ) ) {
+			if ( trade_status.equals( "TRADE_FINISHED" ) || trade_status.equals( "TRADE_SUCCESS" ) ) {
+				return true;
+			} 
+		}
+		return false;
+		
+	}
+
 	public static void main( String[] args ) {
 		AlipayCoreServiceImpl impl = new AlipayCoreServiceImpl();
 		AlipayWebSignVO vo = new AlipayWebSignVO();
@@ -55,5 +76,4 @@ public class AlipayCoreServiceImpl implements IAlipayCoreService {
 			e.printStackTrace();
 		}
 	}
-
 }

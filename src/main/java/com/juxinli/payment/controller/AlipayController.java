@@ -24,8 +24,7 @@ import java.util.Map;
 @RequestMapping( value = "alipay" )
 public class AlipayController extends PaymentBaseController {
 
-	private final static Logger logger = LoggerFactory
-			.getLogger( AlipayController.class );
+	private final static Logger logger = LoggerFactory.getLogger( AlipayController.class );
 
 	@Autowired
 	private IAlipayService alipayService;
@@ -63,6 +62,7 @@ public class AlipayController extends PaymentBaseController {
 				response = PaymentResponse.successResponse( resData );
 			} catch ( Exception e ) {
 				logger.error( "【webPaySign】【Exception】", e );
+				response = PaymentResponse.failResponse( ResponseCodeEnum.PROCESS_FAIL );
 			}
 		}
 		
