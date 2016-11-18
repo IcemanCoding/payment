@@ -1,18 +1,24 @@
 package com.juxinli.payment.domain;
 
+import com.juxinli.payment.core.component.PaymentObject;
+
 import java.math.BigDecimal;
 
 /**
  * Created by ziqing.chen
  * on 2016/11/14.
  */
-public class AlipayWebSignVO {
+public class AlipayWebSignVO extends PaymentObject {
 
-    private String orderCode;
+	private static final long serialVersionUID = 4486153866797717275L;
+	
+	private String orderCode;
     private BigDecimal amount;
     private String subject;
     private String returnUrl;
     private String notifyUrl;
+    private Integer signType;
+    private String platformId;
 
     public void setNotifyUrl( String notifyUrl ) {
         this.notifyUrl = notifyUrl;
@@ -53,4 +59,20 @@ public class AlipayWebSignVO {
     public void setReturnUrl( String returnUrl ) {
         this.returnUrl = returnUrl;
     }
+
+	public Integer getSignType() {
+		return signType;
+	}
+
+	public void setSignType( Integer signType ) {
+		this.signType = signType;
+	}
+
+	public String getPlatformId() {
+		return platformId;
+	}
+
+	public void setPlatformId( String platformId ) {
+		this.platformId = platformId;
+	}
 }

@@ -6,13 +6,14 @@ package com.juxinli.payment.constants;
  */
 public enum ResponseCodeEnum {
 
-    SUCCESS( "JU_00000", "�����ɹ�" ),
+    PROCESS_SUCCESS( "PAY_000000", "操作成功！" ),
+    PROCESS_FAIL( "PAY_000001", "操作失败！" ),
 
-    // ֧������ҳ֧��ǩ�����Ϊ��
-    ALIPAY_WEB_INPUT_ORDERCODE_NULL( "JU_01000", "�����Ų���Ϊ�գ�" ),
-    ALIPAY_WEB_INPUT_NOTIFYURL_NULL( "JU_01001", "������ҳ��ַ����Ϊ�գ�" ),
-    ALIPAY_WEB_INPUT_AMOUNT_NULL( "JU_01002", "��������Ϊ�գ�" ),
-    ALIPAY_WEB_INPUT_SUBJECT_NULL( "JU_01003", "��Ʒ���ⲻ��Ϊ�գ�" )
+    // ֧������ҳ֧��ǩ�����Ϊ��
+    ALIPAY_WEB_INPUT_ORDERCODE_NULL( "PAY_010000", "订单号不能为空！" ),
+    ALIPAY_WEB_INPUT_NOTIFYURL_NULL( "PAY_010001", "通知地址不能为空！" ),
+    ALIPAY_WEB_INPUT_AMOUNT_NULL( "PAY_010002", "订单金额不能为空！" ),
+    ALIPAY_WEB_INPUT_SUBJECT_NULL( "PAY_010003", "商品标题不能为空！" )
     ;
 
     private String code;

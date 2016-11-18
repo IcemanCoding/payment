@@ -1,7 +1,9 @@
 package com.juxinli.payment.core.service;
 
-import com.alibaba.fastjson.JSONObject;
-import com.juxinli.payment.domain.AlipayWebSignModel;
+import java.util.Map;
+
+import com.juxinli.payment.core.exception.PaymentException;
+import com.juxinli.payment.domain.AlipayWebSignVO;
 
 /**
  * Created by ziqing.chen
@@ -9,6 +11,8 @@ import com.juxinli.payment.domain.AlipayWebSignModel;
  */
 public interface IAlipayCoreService {
 
-    JSONObject webPaySign( AlipayWebSignModel _alipayWebSignModel ) throws Exception;
+//    JSONObject webPaySign( AlipayWebSignModel _alipayWebSignModel ) throws Exception;
+
+	Map<String, Object> webPaySign( AlipayWebSignVO webSignVo ) throws PaymentException;
 
 }
