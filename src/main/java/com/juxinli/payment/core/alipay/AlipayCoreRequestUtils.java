@@ -75,8 +75,8 @@ public class AlipayCoreRequestUtils {
 				+ strMethod + "\">" );
 
 		for ( int i = 0; i < keys.size(); i++ ) {
-			String name = ( String ) keys.get( i );
-			String value = ( String ) sParaTemp.get( name );
+			String name = keys.get( i ) + "";
+			String value = sParaTemp.get( name ) + "";
 
 			sbHtml.append( "<input type=\"hidden\" name=\"" + name
 					+ "\" value=\"" + value + "\"/>" );

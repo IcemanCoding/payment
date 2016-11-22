@@ -19,7 +19,7 @@ public class AlipayWebSignVO extends PaymentObject {
     private String notifyUrl;
     private Integer signType;
     private String platformId;
-
+    
     public void setNotifyUrl( String notifyUrl ) {
         this.notifyUrl = notifyUrl;
     }
@@ -75,4 +75,5 @@ public class AlipayWebSignVO extends PaymentObject {
 	public void setPlatformId( String platformId ) {
 		this.platformId = platformId;
 	}
+
 }

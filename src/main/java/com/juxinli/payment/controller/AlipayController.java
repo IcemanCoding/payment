@@ -59,7 +59,13 @@ public class AlipayController extends PaymentBaseController {
 		} else {
 			try {
 				String resData = alipayService.getWebPaySign( webSignVo );
-				response = PaymentResponse.successResponse( resData );
+				if ( resData.equals( "PAY_010100" ) ) {
+					response = PaymentResponse.failResponse( ResponseCodeEnum.ALIPAY_WEB_REPEAT_PAY );
+				} else if ( resData.equals( "PAY_010101" ) ) {
+					response = PaymentResponse.failResponse( ResponseCodeEnum.ALIPAY_WEB_SIGN_FAIL );
+				} else {
+					response = PaymentResponse.successResponse( resData );
+				}
 			} catch ( Exception e ) {
 				logger.error( "【webPaySign】【Exception】", e );
 				response = PaymentResponse.failResponse( ResponseCodeEnum.PROCESS_FAIL );

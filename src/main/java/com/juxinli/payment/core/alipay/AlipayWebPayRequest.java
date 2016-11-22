@@ -11,7 +11,9 @@ import com.juxinli.payment.core.component.PaymentObject;
  * Created by ziqing.chen on 2016/11/17.
  */
 public class AlipayWebPayRequest extends PaymentObject {
-
+	
+	private static final long serialVersionUID = -850494000404481478L;
+	
 	// base params
 	private String serverUrl;
 	private String service;
@@ -30,6 +32,7 @@ public class AlipayWebPayRequest extends PaymentObject {
 	private String seller_id;
 	private String payment_type;
 	private String out_trade_no;
+	private String extra_common_param;
 
 	AlipayWebPayRequest() {
 		super();
@@ -121,6 +124,9 @@ public class AlipayWebPayRequest extends PaymentObject {
 		}
 		if ( out_trade_no != null && !"".equals( out_trade_no ) ) {
 			retMap.put( "out_trade_no", out_trade_no );
+		}
+		if ( extra_common_param != null && !"".equals( extra_common_param ) ) {
+			retMap.put( "extra_common_param", extra_common_param );
 		}
 		return retMap;
 	}
@@ -243,6 +249,14 @@ public class AlipayWebPayRequest extends PaymentObject {
 
 	public void setOut_trade_no( String out_trade_no ) {
 		this.out_trade_no = out_trade_no;
+	}
+
+	public String getExtra_common_param() {
+		return extra_common_param;
+	}
+
+	public void setExtra_common_param( String extra_common_param ) {
+		this.extra_common_param = extra_common_param;
 	}
 
 }

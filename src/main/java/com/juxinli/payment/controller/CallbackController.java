@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.juxinli.payment.core.component.PaymentBaseController;
 import com.juxinli.payment.core.component.PaymentResponse;
@@ -36,6 +37,7 @@ public class CallbackController extends PaymentBaseController {
 	 * @return PaymentResponse    返回类型 
 	 */
     @RequestMapping( value = "alipayWebPaySync", method = RequestMethod.POST )
+    @ResponseBody
     public PaymentResponse alipayWebPaySync( AlipayWebPaySyncVO webPaySyncVo ) {
 
     	logger.info( "【alipayWebPaySync】【Inputs】" + webPaySyncVo.toJsonString() );
@@ -56,7 +58,6 @@ public class CallbackController extends PaymentBaseController {
 
     @RequestMapping( value = "alipayWebPayAsyn", method = RequestMethod.POST )
     public Map<String, Object> alipayWebPayAsyn() {
-
 
         return null;
 
