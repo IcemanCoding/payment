@@ -16,7 +16,10 @@ public enum ResponseCodeEnum {
     ALIPAY_WEB_INPUT_SUBJECT_NULL( "PAY_010003", "商品标题不能为空！" ),
     
     ALIPAY_WEB_REPEAT_PAY( "PAY_010100", "订单号重复支付！" ),
-    ALIPAY_WEB_SIGN_FAIL( "PAY_010101", "签名失败！" )
+    ALIPAY_WEB_SIGN_FAIL( "PAY_010101", "签名失败！" ),
+    
+    ALIPAY_TRANSREPORT_INPUT_PLATFORMID_NULL ( "PAY_010100", "平台编码不能为空！" ),
+    ALIPAY_TRANSREPORT_INPUT_ORDERCODE_NULL ( "PAY_010101", "订单号不能为空！" )
     ;
 
     private String code;

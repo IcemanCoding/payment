@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.httpclient.NameValuePair;
+
 import com.juxinli.payment.constants.AlipayConfigConstants;
 import com.juxinli.payment.core.exception.PaymentException;
 import com.juxinli.payment.core.utils.RSAUtils;
@@ -35,7 +37,7 @@ public class AlipayCoreRequestUtils {
 			result.put( key, value );
 		}
 		return result;
-		
+
 	}
 
 	public static String createLinkString( Map<String, Object> params ) {
@@ -53,8 +55,6 @@ public class AlipayCoreRequestUtils {
 		}
 		return prestr;
 	}
-
-	
 
 	public static String buildRequestForm( Map<String, Object> sParaTemp,
 			String strMethod, String strButtonName ) {
@@ -90,6 +90,18 @@ public class AlipayCoreRequestUtils {
 
 		return sbHtml.toString();
 
+	}
+
+	public static NameValuePair[] generatNameValuePair(
+			Map<String, Object> properties ) {
+		NameValuePair[] nameValuePair = new NameValuePair[properties.size()];
+		int i = 0;
+		for ( Map.Entry<String, Object> entry : properties.entrySet() ) {
+			nameValuePair[i++] = new NameValuePair( entry.getKey(),
+					( String ) entry.getValue() );
+		}
+
+		return nameValuePair;
 	}
 
 	public static void main( String[] args ) throws PaymentException {

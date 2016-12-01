@@ -25,5 +25,16 @@
 				#{amount, jdbcType=DECIMAL}, #{createDate, jdbcType=DATE}, #{updateDate, jdbcType=DATE}
 			 )
 	</insert>
+	
+	<select id="selectByPrimaryKey" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+			platform_id, order_code, process_status, amount, create_date, update_date
+		from
+			payment_trans_detail
+		where
+			platform_id = #{ platformId, jdbcType=VARCHAR }
+		and
+			order_code = #{ orderCode, jdbcType=VARCHAR }
+	</select>
 
 </mapper>

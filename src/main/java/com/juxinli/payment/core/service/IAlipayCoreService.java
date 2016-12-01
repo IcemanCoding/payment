@@ -15,5 +15,7 @@ public interface IAlipayCoreService {
 	Map<String, Object> webPaySign( AlipayWebSignVO webSignVo ) throws PaymentException;
 
 	Boolean verifyWebPayCallback( Map<String, Object> inputsMap ) throws PaymentException;
+	
+	Integer transQuery( String orderCode ) throws PaymentException;
 
 }

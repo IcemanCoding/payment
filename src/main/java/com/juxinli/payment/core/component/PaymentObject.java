@@ -1,6 +1,7 @@
 package com.juxinli.payment.core.component;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -23,6 +24,15 @@ public class PaymentObject extends Object implements Serializable {
 
     public String toJsonString() {
         return JSON.toJSONString( this );
+    }
+    
+    public String toString(){ 
+    	Field[] fields = this.getClass().getDeclaredFields();
+    	StringBuffer sb = new StringBuffer();
+    	for( int i=0; i<fields.length; i++ ) {
+    		sb.append( fields[i] );
+    	}
+    	return new String( sb );
     }
 
 }

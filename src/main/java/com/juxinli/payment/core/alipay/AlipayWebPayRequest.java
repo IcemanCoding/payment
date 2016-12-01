@@ -58,7 +58,7 @@ public class AlipayWebPayRequest extends PaymentObject {
 				AlipayConfigConstants.INSTANT_ARRIVAL_SELLER_ID,
 				AlipayConfigConstants.INSTANT_ARRIVAL_PAYMENT_TYPE );
 	}
-
+	
 	AlipayWebPayRequest( String serverUrl, String service, String partner,
 			String inputCharset, String signType, String privateKey,
 			String publicKey ) {
@@ -87,8 +87,6 @@ public class AlipayWebPayRequest extends PaymentObject {
 	AlipayWebPayRequest( String serverUrl ) {
 		this.serverUrl = serverUrl;
 	}
-
-	
 
 	public Map<String, Object> toHashMap() {
 		Map<String, Object> retMap = new PaymentHashMap<String, Object>();

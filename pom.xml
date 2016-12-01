@@ -10,6 +10,7 @@
 
 	<properties>
 		<spring.version>4.0.2.RELEASE</spring.version>
+		<infogen.soa.version>V2.6.03R160413</infogen.soa.version>
 		<mybatis.version>3.2.6</mybatis.version>
 		<junit.version>4.11</junit.version>
 		<mybatis-spring.version>1.2.2</mybatis-spring.version>
@@ -23,9 +24,23 @@
 		<logback-ext-spring.version>0.1.1</logback-ext-spring.version>
 		<commons-collections.version>4.0</commons-collections.version>
 		<jstl.version>1.2</jstl.version>
+		<netty.version>5.0.0.Alpha1</netty.version>
 	</properties>
 
 	<dependencies>
+
+		<!-- infogen -->
+		<dependency>
+			<groupId>com.infogen</groupId>
+			<artifactId>infogen_soa</artifactId>
+			<version>${infogen.soa.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>io.netty</groupId>
+					<artifactId>netty-all</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
 		<!-- junit -->
 		<dependency>
@@ -197,6 +212,22 @@
 			<version>2.7.3</version>
 		</dependency>
 		<!-- redis cache related.....end -->
+
+		<!-- netty -->
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>${netty.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient -->
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+
 	</dependencies>
 	<build>
 		<finalName>payment</finalName>

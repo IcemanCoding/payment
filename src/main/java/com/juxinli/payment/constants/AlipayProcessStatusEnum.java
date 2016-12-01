@@ -1,6 +1,8 @@
 package com.juxinli.payment.constants;
 
-public enum AlipayProcessStatusEnum {
+import com.juxinli.payment.core.component.EnumMsg;
+
+public enum AlipayProcessStatusEnum implements EnumMsg {
 
 	INIT_STATUS( 1, "支付中" ), SUCCESS_STATUS( 2, "支付成功" ), FAIL_STATUS( 3,
 			"支付失败" );
@@ -27,6 +29,16 @@ public enum AlipayProcessStatusEnum {
 
 	public void setMsg( String msg ) {
 		this.msg = msg;
+	}
+
+	@Override
+	public String getName() {
+		return this.msg;
+	}
+
+	@Override
+	public int getType() {
+		return this.processStatus;
 	}
 
 }

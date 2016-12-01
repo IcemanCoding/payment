@@ -1,11 +1,6 @@
 package com.juxinli.payment.controller;
 
-import com.juxinli.payment.constants.ResponseCodeEnum;
-import com.juxinli.payment.controller.utils.InputsValidUtils;
-import com.juxinli.payment.core.component.PaymentBaseController;
-import com.juxinli.payment.core.component.PaymentResponse;
-import com.juxinli.payment.domain.AlipayWebSignVO;
-import com.juxinli.payment.service.IAlipayService;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Map;
+import com.juxinli.payment.constants.ResponseCodeEnum;
+import com.juxinli.payment.controller.utils.InputsValidUtils;
+import com.juxinli.payment.core.component.PaymentBaseController;
+import com.juxinli.payment.core.component.PaymentResponse;
+import com.juxinli.payment.domain.AlipayWebSignVO;
+import com.juxinli.payment.domain.TransReportBO;
+import com.juxinli.payment.domain.TransReportVO;
+import com.juxinli.payment.service.IAlipayService;
 
 /**
  * Created by ziqing.chen on 2016/11/11.
@@ -79,9 +81,32 @@ public class AlipayController extends PaymentBaseController {
 	}
 
 	@RequestMapping( value = "transReport", method = RequestMethod.GET )
-	public Map<String, Object> transReport() {
+	@ResponseBody
+	public PaymentResponse transReport( TransReportVO transReportVo ) {
 
-		return null;
+		logger.info( "【transReport】【Inputs】" + transReportVo.toJsonString() );
+		
+		PaymentResponse response = new PaymentResponse();
+		ResponseCodeEnum inputsCheck = InputsValidUtils.alipayTransReportInputsValid( transReportVo );
+		if ( inputsCheck != null ) {
+			response = PaymentResponse.failResponse( inputsCheck );
+		} else {
+			try {
+				TransReportBO resData = alipayService.getTransReport( transReportVo );
+				if ( resData == null ) {
+					response = PaymentResponse.failResponse( ResponseCodeEnum.PROCESS_FAIL );
+				} else {
+					response = PaymentResponse.successResponse( resData );
+				}
+			} catch ( Exception e ) {
+				logger.error( "【transReport】【Exception】", e );
+				response = PaymentResponse.failResponse( ResponseCodeEnum.PROCESS_FAIL );
+			}
+		}
+		
+		logger.info( "【transReport】【Outputs】" + response.toJsonObject() );
+		
+		return response;
 
 	}
 

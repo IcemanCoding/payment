@@ -2,6 +2,7 @@ package com.juxinli.payment.controller.utils;
 
 import com.juxinli.payment.constants.ResponseCodeEnum;
 import com.juxinli.payment.domain.AlipayWebSignVO;
+import com.juxinli.payment.domain.TransReportVO;
 
 import java.math.BigDecimal;
 
@@ -28,5 +29,17 @@ public class InputsValidUtils {
         return null;
 
     }
+
+	public static ResponseCodeEnum alipayTransReportInputsValid( TransReportVO transReportVo ) {
+		
+		if ( "".equals( transReportVo.getOrderCode() ) ) {
+			return ResponseCodeEnum.ALIPAY_TRANSREPORT_INPUT_ORDERCODE_NULL;
+		}
+		if ( "".equals( transReportVo.getPlatformId() ) ) {
+			return ResponseCodeEnum.ALIPAY_TRANSREPORT_INPUT_PLATFORMID_NULL;
+		}
+		return null;
+		
+	}
 
 }
